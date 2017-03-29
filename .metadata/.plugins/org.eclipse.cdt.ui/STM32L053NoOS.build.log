@@ -1,0 +1,11 @@
+00:42:39 **** Incremental Build of configuration Debug for project STM32L053NoOS ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "STM32L053NoOS.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7060	    160	    416	   7636	   1dd4	STM32L053NoOS.elf
+Finished building: STM32L053NoOS.siz
+ 
+
+00:42:39 Build Finished (took 200ms)
+
