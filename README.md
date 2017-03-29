@@ -59,3 +59,11 @@ These are original source and tutorial.
  - [mbed-os](https://github.com/ARMmbed/mbed-os)   
  - [mbed_NucleoL053R8](https://github.com/Hotboards/mbed_NucleoL053R8)
  
+ ## (Optional) Link between CMISOS <-> FreeRTOS
+Link between CMISOS <-> FreeRTOS, Use when you want to remove CMISOS   
+The following lines are included in FreeRTOSConfig.h:
+```c
+#define vPortSVCHandler      SVC_Handler
+#define xPortPendSVHandler   PendSV_Handler
+#define xPortSysTickHandler  SysTick_Handler
+```
