@@ -35,7 +35,7 @@ openocd -f board/stm32l0discovery.cfg
  - Setup GNU ARM Plug-in
     - Detail 1
     - Detail 2
-### 3. [Installing STM32CubeMX on Linux](https://gist.github.com/Lanchon/2156953d18f7534a926b)
+### 3. Installing [STM32CubeMX on Linux](https://gist.github.com/Lanchon/2156953d18f7534a926b)
 The STM32CubeMX tool is written in portable java, but unfortunately it is distributed as a Windows executable embedded in a Windows installer.
 
 To intall it on Linux:
