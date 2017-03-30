@@ -67,3 +67,5 @@ The following lines are included in FreeRTOSConfig.h:
 #define xPortPendSVHandler   PendSV_Handler
 #define xPortSysTickHandler  SysTick_Handler
 ```
+
+Note:
