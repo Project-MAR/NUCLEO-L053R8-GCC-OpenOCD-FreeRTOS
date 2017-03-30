@@ -34,7 +34,6 @@
 #include "stm32l0xx_hal.h"
 #include "stm32l0xx.h"
 #include "stm32l0xx_it.h"
-#include "cmsis_os.h"
 
 /* USER CODE BEGIN 0 */
 
@@ -51,14 +50,8 @@
 */
 void SysTick_Handler(void)
 {
-  /* USER CODE BEGIN SysTick_IRQn 0 */
-
-  /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
-  osSystickHandler();
-  /* USER CODE BEGIN SysTick_IRQn 1 */
-
-  /* USER CODE END SysTick_IRQn 1 */
+  xPortSysTickHandler();
 }
 
 /******************************************************************************/

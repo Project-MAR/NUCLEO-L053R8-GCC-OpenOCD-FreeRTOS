@@ -138,9 +138,6 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.348666291.1232299896" name="system_stm32l0xx.c" rcbsApplicability="disable" resourcePath="src/system_stm32l0xx.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.891715158.99892221">
-						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.891715158.99892221" name="Cross ARM GNU C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.891715158"/>
-					</fileInfo>
 					<sourceEntries>
 						<entry excluding="system_stm32l0xx.c|_write.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="system"/>

@@ -43,16 +43,32 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32l0xx_hal.h"
-#include "cmsis_os.h"
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+#include "queue.h"
+#include "semphr.h"
+#include "event_groups.h"
 
 /* Private variables ---------------------------------------------------------*/
-osThreadId defaultTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void Error_Handler(void);
 static void MX_GPIO_Init(void);
-void StartDefaultTask(void const * argument);
+
+void LedBlink(void* p);
+
+/* StartDefaultTask function */
+void LedBlink(void* p)
+{
+    while(1)
+    {
+    	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+        vTaskDelay(100);
+    }
+}
 
 int main(void)
 {
@@ -76,8 +92,9 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+
+  xTaskCreate(LedBlink, (signed char*)"task_LedBlink", 200, 0, 1, 0);
+
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -86,7 +103,7 @@ int main(void)
   /* add queues, ... */
  
   /* Start scheduler */
-  osKernelStart();
+  vTaskStartScheduler();
   
   /* We should never get here as control is now taken by the scheduler */
 
@@ -190,16 +207,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
 
-}
-
-/* StartDefaultTask function */
-void StartDefaultTask(void const * argument)
-{
-  for(;;)
-  {
-	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-    osDelay(1000);
-  }
 }
 
 /**

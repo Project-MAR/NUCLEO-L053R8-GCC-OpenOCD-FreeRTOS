@@ -147,10 +147,10 @@ g_pfnVectors:
   .word  0
   .word  0
   .word  0
-  .word  SVC_Handler
+  .word  vPortSVCHandler
   .word  0
   .word  0
-  .word  PendSV_Handler
+  .word  xPortPendSVHandler
   .word  SysTick_Handler
   .word     WWDG_IRQHandler                   /* Window WatchDog              */
   .word     PVD_IRQHandler                    /* PVD through EXTI Line detection */
@@ -199,11 +199,11 @@ g_pfnVectors:
    .weak      HardFault_Handler
    .thumb_set HardFault_Handler,Default_Handler
 
-   .weak      SVC_Handler
-   .thumb_set SVC_Handler,Default_Handler
+   .weak      vPortSVCHandler
+   .thumb_set vPortSVCHandler,Default_Handler
 
-   .weak      PendSV_Handler
-   .thumb_set PendSV_Handler,Default_Handler
+   .weak      xPortPendSVHandler
+   .thumb_set xPortPendSVHandler,Default_Handler
 
    .weak      SysTick_Handler
    .thumb_set SysTick_Handler,Default_Handler
