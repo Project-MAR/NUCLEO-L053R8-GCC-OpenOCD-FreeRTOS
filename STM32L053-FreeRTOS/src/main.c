@@ -93,8 +93,7 @@ int main(void)
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
 
-  xTaskCreate(LedBlink, (signed char*)"task_LedBlink", 200, 0, 1, 0);
-
+  xTaskCreate(LedBlink, (signed char*)"task_LedBlink", 5, 0, 1, 0);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
