@@ -47,12 +47,17 @@
 
 /* Private variables ---------------------------------------------------------*/
 osThreadId defaultTaskHandle;
+osThreadId task1Handle;
+osThreadId task2Handle;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void Error_Handler(void);
 static void MX_GPIO_Init(void);
+
 void StartDefaultTask(void const * argument);
+void StartTASK1(void const * argument);
+void StartTASK2(void const * argument);
 
 int main(void)
 {
@@ -77,7 +82,12 @@ int main(void)
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(task1, StartTASK1, osPriorityNormal, 0, 128);
+  osThreadDef(task2, StartTASK2, osPriorityNormal, 0, 128);
+
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+  task1Handle       = osThreadCreate(osThread(task1)      , NULL);
+  task2Handle       = osThreadCreate(osThread(task2)      , NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -201,6 +211,25 @@ void StartDefaultTask(void const * argument)
     osDelay(1000);
   }
 }
+
+void StartTASK1(void const * argument)
+{
+  for(;;)
+  {
+	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+    osDelay(333);
+  }
+}
+
+void StartTASK2(void const * argument)
+{
+  for(;;)
+  {
+	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+    osDelay(789);
+  }
+}
+
 
 /**
   * @brief  This function is executed in case of error occurrence.
