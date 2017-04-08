@@ -1270,3 +1270,8 @@ Contains: The project description file (.project) for 'RemoteSystemsTempFiles' i
 
 !ENTRY org.eclipse.launchbar.core 2 0 2017-04-09 00:38:04.137
 !MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.core.resources 2 2 2017-04-09 00:40:32.238
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2017-04-09 00:40:32.238
+!MESSAGE The project description file (.project) for 'RemoteSystemsTempFiles' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
