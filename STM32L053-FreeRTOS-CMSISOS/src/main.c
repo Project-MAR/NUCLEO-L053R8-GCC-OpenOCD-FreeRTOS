@@ -52,12 +52,19 @@
 #include "event_groups.h"
 
 /* Private variables ---------------------------------------------------------*/
+<<<<<<< HEAD:STM32L053-FreeRTOS/src/main.c
+=======
+osThreadId defaultTaskHandle;
+osThreadId task1Handle;
+osThreadId task2Handle;
+>>>>>>> RTOS-with-cmsisOS:STM32L053-FreeRTOS-CMSISOS/src/main.c
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void Error_Handler(void);
 static void MX_GPIO_Init(void);
 
+<<<<<<< HEAD:STM32L053-FreeRTOS/src/main.c
 void LedBlink(void* p);
 
 /* StartDefaultTask function */
@@ -69,6 +76,11 @@ void LedBlink(void* p)
         vTaskDelay(100);
     }
 }
+=======
+void StartDefaultTask(void const * argument);
+void StartTASK1(void const * argument);
+void StartTASK2(void const * argument);
+>>>>>>> RTOS-with-cmsisOS:STM32L053-FreeRTOS-CMSISOS/src/main.c
 
 int main(void)
 {
@@ -92,9 +104,19 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
+<<<<<<< HEAD:STM32L053-FreeRTOS/src/main.c
 
   xTaskCreate(LedBlink, (signed char*)"task_LedBlink", 200, 0, 1, 0);
 
+=======
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(task1, StartTASK1, osPriorityNormal, 0, 128);
+  osThreadDef(task2, StartTASK2, osPriorityNormal, 0, 128);
+
+  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+  task1Handle       = osThreadCreate(osThread(task1)      , NULL);
+  task2Handle       = osThreadCreate(osThread(task2)      , NULL);
+>>>>>>> RTOS-with-cmsisOS:STM32L053-FreeRTOS-CMSISOS/src/main.c
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -209,6 +231,38 @@ static void MX_GPIO_Init(void)
 
 }
 
+<<<<<<< HEAD:STM32L053-FreeRTOS/src/main.c
+=======
+/* StartDefaultTask function */
+void StartDefaultTask(void const * argument)
+{
+  for(;;)
+  {
+	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+    osDelay(1000);
+  }
+}
+
+void StartTASK1(void const * argument)
+{
+  for(;;)
+  {
+	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+    osDelay(333);
+  }
+}
+
+void StartTASK2(void const * argument)
+{
+  for(;;)
+  {
+	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+    osDelay(789);
+  }
+}
+
+
+>>>>>>> RTOS-with-cmsisOS:STM32L053-FreeRTOS-CMSISOS/src/main.c
 /**
   * @brief  This function is executed in case of error occurrence.
   * @param  None
